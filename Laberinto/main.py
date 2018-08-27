@@ -20,11 +20,18 @@ def main():
 		laberinto.inicio(80, 255,120, pantalla)
 		laberinto.meta(200, 5,210, pantalla)
 
+		astar = Astar(laberinto)
+		astar.calculateHeuristic()
+		astar.getPath()
+
 		fin = False
 		while not fin:
 			for e in pygame.event.get():
 				if e.type == QUIT:
 					fin = True
+				if e.type == KEYDOWN:
+					if (e.key == K_LEFT):
+						print(astar)
 			pygame.display.update()
 			r.tick()
 
